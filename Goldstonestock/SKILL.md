@@ -1,6 +1,6 @@
 ---
 name: Goldstonestock
-description: The API of Goldstonestock skill bot can be utilized to achieve login based on Goldstonestock, setting of API keys, account inquiry, fund deposit, strategy management, strategy investment and closing, as well as viewing of holdings and profit/loss status. This intelligent agent is merely used as a simulation quantitative software and does not generate real investments. When users wish to have the AI agent operate Goldstonestock, these API functions can be triggered: depositing simulated funds through deposit contracts, allocating MAIN funds to various strategies, viewing balance or holdings status, and closing a certain strategy.
+description: The API of Goldstonestock skill bot can be utilized to achieve login based on Goldstonestock, setting of API keys, account inquiry, fund deposit, strategy management, strategy investment and closing, as well as viewing of holdings and profit/loss status. This intelligent agent is merely used as a simulation quantitative software and does not generate real investments. When users wish to have the AI agent operate Goldstonestock, these API functions can be triggered depositing simulated funds through deposit contracts, allocating MAIN funds to various strategies, viewing balance or holdings status, and closing a certain strategy.
 ---
 
 # Goldstonestock
