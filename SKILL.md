@@ -38,7 +38,7 @@ When a user sends "/help" or asks about the available commands, please reply wit
 | `/deposit <sn> <CNH> <topupmoney>` | Create a simulated fund for the selected assets. | `POST /v1/aideposit` |
 |`/deposit-status <deposit_id>`|status of simulated deposit records|`GET /v1/airesult?session_id={deposit_id}`|
 |`/Position`|List all the holdings.|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
-|`/Order`|List all the orders.|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
+|`/Order`|List the order for opening positions|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
 
 
 
@@ -128,7 +128,7 @@ List Position:
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
 ```
 Please list the code, name, direction, position quantity, opening price, current price, floating profit/loss, profit/loss rate, margin occupation, spread fee, cumulative overnight interest, and position status (1 for normal, 2 for closed) in the form of information modules in the report.
-## Order
+## BUILD Order
 List Order:
 ```http
 GET /v1/aitradeorder?limit=10&offset=0&sn={....}
