@@ -34,11 +34,11 @@ When a user sends "/help" or asks about the available commands, please reply wit
 | `/help` | Display all available Goldstonestock operations.| Skills Help |
 | `/login <username>` | GoldstoneStock login and authorization process has begun.| `POST /v1/ailogin`,`POST /v1/aiverylogin`,`POST /v1/aiverify`|
 | `/accounts` | Display the balance of the main account.| `POST /v1/aiaccounts` |
-|`/transactions`|Display the transaction records of each item in the account ledger.|`GET /v1/transactions?limit=100&offset=0&sn={....}`|
+|`/transactions`|Display the transaction records of each item in the account ledger.|`GET /v1/transactions?limit=10&offset=0&sn={....}`|
 | `/deposit <sn> <CNH> <topupmoney>` | Create a simulated fund for the selected assets. | `POST /v1/aideposit` |
 |`/deposit-status <deposit_id>`|status of simulated deposit records|`GET /v1/airesult?session_id={deposit_id}`|
-|`/Position`|List all the holdings.|`GET /v1/aipositionlist?limit=100&offset=0&sn={....}`|
-|`/Order`|List all the orders.|`GET /v1/aitradeorder?limit=100&offset=0&sn={....}`|
+|`/Position`|List all the holdings.|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
+|`/Order`|List all the orders.|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
 
 
 
@@ -94,7 +94,7 @@ Please report the account's assets, balance, available balance, locked balance, 
 ## Account transaction records
  Display the transaction records for each item in the account：
  ```http
-GET /v1/transactions?limit=100&offset=0&sn={....}
+GET /v1/transactions?limit=10&offset=0&sn={....}
 ```
 Please list the serial number, asset category, type, change amount, post-change balance, description and time in the report.
 ## Deposits
@@ -125,13 +125,13 @@ Please report the transaction number, account number, asset type, deposit amount
 ## Position
 List Position:
 ```http
-GET /v1/aipositionlist?limit=100&offset=0&sn={....}
+GET /v1/aipositionlist?limit=10&offset=0&sn={....}
 ```
 The strategy response includes its required `asset`. Always show the asset when presenting strategies.  The response may also include instruments; you may report symbols and market type, but do not report exchange or venue names.
 
 ## Order
 List Order:
 ```http
-GET /v1/aitradeorder?limit=100&offset=0&sn={....}
+GET /v1/aitradeorder?limit=10&offset=0&sn={....}
 ```
 The strategy response includes its required `asset`. Always show the asset when presenting strategies.  The response may also include instruments; you may report symbols and market type, but do not report exchange or venue names.
