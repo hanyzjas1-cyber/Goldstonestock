@@ -107,20 +107,20 @@ POST /v1/aideposit
 Content-Type: application/json
 {"sn":"....","topupway":"CNH","topupmoney":"10"}
 ```
-Use the returned data information to continuously query the status of the simulated fund deposit records.
-Poll the conversation results until the "submitted" field is set to true:
+Use the returned data information "deposit_url" and hand it over to the user for contacting the customer service.
+Continuously query the status of the simulated fund deposit records using the "deposit_id". Poll the conversation results until the "data" field is set to true:
 
 ```http
-GET /v1/airesult?session_id={data}
+GET /v1/airesult?session_id={deposit_id}
 ```
-After submission, please check `GET /v1/aiaccounts?sn={....}` to confirm that the transaction has been completed and the main account balance has been updated. Submitting a simulated deposit does not mean that the funds have been credited to your account.
+After submission, please check `POST /v1/aiaccounts` to confirm that the transaction has been completed and the main account balance has been updated. Submitting a simulated deposit does not mean that the funds have been credited to your account.
 
 To query one deposit:
 
 ```http
-GET /v1/aigetdeposit?session_id={data}
+GET /v1/aigetdeposit?session_id={deposit_id}
 ```
-Report `status`, `topupmoney`, `asset`, and `data` when present.
+Please report the transaction number, account number, asset type, deposit amount, time and status.
 
 ## Position
 List Position:
