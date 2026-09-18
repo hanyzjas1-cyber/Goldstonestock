@@ -28,20 +28,6 @@ Please store this Goldstonestock user API key only in the confidential/session s
 Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
 
 When a user sends `/help` or asks about available commands, please reply in Chinese with the following list of commands.
-| 命令  | 用户操作 |
-| ----- | ------ |
-| `/help` | 显示所有可用的 Goldstonestock 操作。|
-| `/login <username>` | 开始GoldstoneStock登录和授权流程。|
-| `/accounts` | 显示主账户余额。|
-|`/transactions`|显示账户账簿中每项的交易记录。|
-| `/deposit <sn> <CNH> <topupmoney>` | 为选定的资产创建一个模拟基金。 |
-|`/deposit-status <deposit_id>`|模拟存款记录的状态。|
-|`/Position`|列出持仓。|
-|`/Close-position`|列出已平持仓。|
-|`/Order`|列出建仓订单。|
-|`/Close-order`|列出平仓订单。|
-
-The main interface API corresponding to the user's instructions is as follows:
 
 | 命令  | 用户操作 | 主要 API 接口 |
 | --- | --- | --- |
