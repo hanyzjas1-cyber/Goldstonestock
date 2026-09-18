@@ -4,7 +4,7 @@ description: The API of Goldstonestock skill bot can be utilized to achieve logi
 ---
 
 # Goldstonestock
-By utilizing this skill, one can interact with the Goldstonestock API on behalf of the user. Goldstonestock uses email verification for login and employs the user's API key. The user agent must only call the Goldstonestock API. The user's identity identifier is their Goldstonestock trading account, which is passed by the Goldstonestock backend in the form of "trade_name"; do not inquire about the user's private key or Goldstonestock password
+By leveraging this skill, the intelligent agent can interact on behalf of the user with the Goldstonestock API. Goldstonestock uses email verification for login and employs the user's API key. The intelligent agent merely needs to call the Goldstonestock API. The user's identity identifier is their Goldstonestock trading account, and this account information is passed by the Goldstonestock backend in the form of "trade_name"; do not inquire about the user's private key or the Goldstonestock password.
 ## Configuration
 
 Use the service base URL provided by the user or the environment:
