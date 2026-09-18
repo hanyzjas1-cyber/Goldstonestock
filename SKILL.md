@@ -133,4 +133,16 @@ List Order:
 ```http
 GET /v1/aitradeorder?limit=10&offset=0&sn={....}
 ```
-Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, and status (1 for processing, 3 for complete transaction, 4 for cancellation) in the form of information modules in the report.
+Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:
+Name/Code: Shennong Seed Industry (300189.SZ)
+Type: Position Establishment
+Direction: Long
+Contract Amount: 50,000
+Completed Transaction Quantity: 50,000
+Order Method: Market Price
+Order Price: 6.39
+Margin: 5,000
+Spread Fee: 1,500
+Creation Time: 2026-09-18 09:30:05
+Update Time: 2026-09-18 09:30:08
+Order Status: 1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order
