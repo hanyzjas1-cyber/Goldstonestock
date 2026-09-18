@@ -86,7 +86,7 @@ Use these after authentication:
 ```http
 POST /v1/aiaccounts
 Content-Type: application/json
-{"sn":"1234"}
+{"sn":"...."}
 ```
 Please report the account's assets, balance, available balance, locked balance, investment amount, settled profit and loss, estimated profit and loss, and current status. Do not disclose the exchange fields or the name of the trading platform.
 
