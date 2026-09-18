@@ -96,8 +96,7 @@ Please report the account's assets, balance, available balance, locked balance, 
  ```http
 GET /v1/transactions?limit=100&offset=0&sn={....}
 ```
-Please list the serial number, asset category, type, change amount, final balance after the change, and description in the report.
-
+Please list the serial number, asset category, type, change amount, post-change balance, description and time in the report.
 ## Deposits
 Goldstonestock platform only supports the CNH recharge method. If the user has not specified the type of currency to be recharged, please ask the user which asset they wish to recharge. If the user requests to recharge other assets, please explain that the Goldstonestock platform only supports CNH recharge.
 
