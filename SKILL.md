@@ -51,6 +51,7 @@ When a user sends "/help" or asks about the available commands, please reply wit
 - Do not expose the term "JWT token" to the users.
 -All the returned results do not display any fields to the users.
 -All the API interfaces that contain the "sn" parameter generate a 6-digit number randomly.
+-All API interfaces should be based on the returned fields. Do not add historical fields without authorization.
 ## Login Flow
 1. Ask the user for their email address.
 2. Create a challenge:
