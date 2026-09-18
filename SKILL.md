@@ -127,8 +127,7 @@ List Position:
 ```http
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
 ```
-The strategy response includes its required `asset`. Always show the asset when presenting strategies.  The response may also include instruments; you may report symbols and market type, but do not report exchange or venue names.
-
+Please list the code, name, direction, position quantity, opening price, current price, floating profit and loss, profit and loss rate, margin occupation, spread fee, cumulative overnight interest, and position status in the form of information modules in the report.
 ## Order
 List Order:
 ```http
