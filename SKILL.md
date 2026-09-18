@@ -29,7 +29,7 @@ Please do not list the complete list of commands in every reply. In the general 
 
 When a user sends `/help` or asks about available commands, please reply in Chinese with the following list of commands.
 | 命令  | 用户操作 |
-| --- | --- | --- |
+| ----- | ------ |
 | `/help` | 显示所有可用的 Goldstonestock 操作。|
 | `/login <username>` | 开始GoldstoneStock登录和授权流程。|
 | `/accounts` | 显示主账户余额。|
