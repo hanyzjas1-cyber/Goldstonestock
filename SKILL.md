@@ -107,7 +107,7 @@ POST /v1/aideposit
 Content-Type: application/json
 {"sn":"....","topupway":"CNH","topupmoney":"10"}
 ```
-Use the returned data information "deposit_url" and hand it over to the user for contacting the customer service.
+Use the returned data information "deposit_id".
 Continuously query the status of the simulated fund deposit records using the "deposit_id". Poll the conversation results until the "data" field is set to true:
 
 ```http
