@@ -133,16 +133,16 @@ List Order:
 ```http
 GET /v1/aitradeorder?limit=10&offset=0&sn={....}
 ```
-Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:
-名称/代码：神农种业(300189.SZ)
-类型：建仓
-方向：做多
-合约金额：50000
-已成交数量：50000
-下单方式：市价
-下单价格：6.39
-保证金额：5000
-点差费：1500
-创建时间：2026-09-18 09:30:05
-更新时间：2026-09-18 09:30:08
-订单状态：1为处理中，3为全部成交、4为已撤单
+Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:  
+-名称/代码：神农种业(300189.SZ)
+-类型：建仓
+-方向：做多
+-合约金额：50000
+-已成交数量：50000
+-下单方式：市价
+-下单价格：6.39
+-保证金额：5000
+-点差费：1500
+-创建时间：2026-09-18 09:30:05
+-更新时间：2026-09-18 09:30:08
+-订单状态：1为处理中，3为全部成交、4为已撤单
