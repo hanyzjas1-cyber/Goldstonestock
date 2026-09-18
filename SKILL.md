@@ -34,7 +34,7 @@ When a user sends "/help" or asks about the available commands, please reply wit
 | `/help` | Display all available Goldstonestock operations.| Skills Help |
 | `/login <username>` | GoldstoneStock login and authorization process has begun.| `POST /v1/ailogin`,`POST /v1/aiverylogin`,`POST /v1/aiverify`|
 | `/accounts` | Display the balance of the main account.| `POST /v1/aiaccounts` |
-|`/transactions [account_id]`|Display the transaction records of each item in the account ledger.|`GET /v1/transactions?account_id={account_id}`|
+|`/transactions`|Display the transaction records of each item in the account ledger.|`POST /v1/transactions`|
 | `/deposit <sn> <CNH> <topupmoney>` | Create a simulated fund for the selected assets. | `POST /v1/aideposit` |
 |`/deposit-status <deposit_id>`|status of simulated deposit records|`GET /v1/airesult?session_id={deposit_id}`|
 |`/Position`|List all the holdings.|`GET /v1/aipositionlist?limit=100&offset=0&sn={....}`|
