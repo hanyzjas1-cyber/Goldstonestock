@@ -29,18 +29,18 @@ Please do not list the complete list of commands in every reply. In the general 
 
 When a user sends `/help` or asks about available commands, please reply in Chinese with the following list of commands.
 
-| Command  | User operation | Main API interfaces |
+| 命令  | 用户操作 | 主要 API 接口 |
 | --- | --- | --- |
-| `/help` | Display all available Goldstonestock operations.| Skills Help |
-| `/login <username>` | GoldstoneStock login and authorization process has begun.| `POST /v1/ailogin`,`POST /v1/aiverylogin`,`POST /v1/aiverify`|
-| `/accounts` | Display the balance of the main account.| `POST /v1/aiaccounts` |
-|`/transactions`|Display the transaction records of each item in the account ledger.|`GET /v1/transactions?limit=10&offset=0&sn={....}`|
-| `/deposit <sn> <CNH> <topupmoney>` | Create a simulated fund for the selected assets. | `POST /v1/aideposit` |
-|`/deposit-status <deposit_id>`|status of simulated deposit records|`GET /v1/airesult?session_id={deposit_id}`|
-|`/Position`|List holdings.|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
-|`/Close-position`|List the closed positions held.|`GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}`|
-|`/Order`|List the order for opening positions|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
-|`/Close-order`|List the order for opening positions|`GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}`|
+| `/help` | 显示所有可用的 Goldstonestock 操作。| 技能帮助 |
+| `/login <username>` | 开始GoldstoneStock登录和授权流程。| `POST /v1/ailogin`,`POST /v1/aiverylogin`,`POST /v1/aiverify`|
+| `/accounts` | 显示主账户余额。| `POST /v1/aiaccounts` |
+|`/transactions`|显示账户账簿中每项的交易记录。|`GET /v1/transactions?limit=10&offset=0&sn={....}`|
+| `/deposit <sn> <CNH> <topupmoney>` | 为选定的资产创建一个模拟基金。 | `POST /v1/aideposit` |
+|`/deposit-status <deposit_id>`|模拟存款记录的状态。|`GET /v1/airesult?session_id={deposit_id}`|
+|`/Position`|列出持仓。|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
+|`/Close-position`|列出已平持仓。|`GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}`|
+|`/Order`|列出建仓订单。|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
+|`/Close-order`|列出平仓订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}`|
 
 
 ## Safety Rules
