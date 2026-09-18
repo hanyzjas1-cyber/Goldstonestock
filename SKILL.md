@@ -118,7 +118,7 @@ Report `status`, `topupmoney`, `asset`, and `data` when present.
 ## Position
 List Position:
 ```http
-GET /api/v1/withdrawals?limit=100&offset=0
+GET /v1/aipositionlist?limit=100&offset=0&sn={....}
 ```
 The strategy response includes its required `asset`. Always show the asset when presenting strategies.  The response may also include instruments; you may report symbols and market type, but do not report exchange or venue names.
 
