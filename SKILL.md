@@ -91,6 +91,13 @@ Content-Type: application/json
 ```
 Please report the account's assets, balance, available balance, locked balance, investment amount, settled profit and loss, estimated profit and loss, and current status. Do not disclose the exchange fields or the name of the trading platform.
 
+## Account transaction records
+ Display the transaction records for each item in the account：
+ ```http
+GET /v1/transactions?limit=100&offset=0&sn={....}
+```
+Please list the serial number, asset category, type, change amount, final balance after the change, and description in the report.
+
 ## Deposits
 Goldstonestock platform only supports the CNH recharge method. If the user has not specified the type of currency to be recharged, please ask the user which asset they wish to recharge. If the user requests to recharge other assets, please explain that the Goldstonestock platform only supports CNH recharge.
 
