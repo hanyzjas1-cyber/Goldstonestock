@@ -25,9 +25,9 @@ Please store this Goldstonestock user API key only in the confidential/session s
 
 ## Response Format
 
-Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input /help to view all available operations.
+Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
 
-When a user sends /help or asks about the available commands, please reply with the following list of commands in English:
+When a user sends `/help` or asks about available commands, please reply in Chinese with the following list of commands.
 
 | Command  | User operation | Main API interfaces |
 | --- | --- | --- |
