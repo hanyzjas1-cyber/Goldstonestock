@@ -127,10 +127,10 @@ List Position:
 ```http
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
 ```
-Please list the code, name, direction, position quantity, opening price, current price, floating profit and loss, profit and loss rate, margin occupation, spread fee, cumulative overnight interest, and position status in the form of information modules in the report.
+Please list the code, name, direction, position quantity, opening price, current price, floating profit/loss, profit/loss rate, margin occupation, spread fee, cumulative overnight interest, and position status (1 for normal, 2 for closed) in the form of information modules in the report.
 ## Order
 List Order:
 ```http
 GET /v1/aitradeorder?limit=10&offset=0&sn={....}
 ```
-The strategy response includes its required `asset`. Always show the asset when presenting strategies.  The response may also include instruments; you may report symbols and market type, but do not report exchange or venue names.
+Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, and status (1 for processing, 3 for complete transaction, 4 for cancellation) in the form of information modules in the report.
