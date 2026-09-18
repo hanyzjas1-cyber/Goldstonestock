@@ -37,9 +37,10 @@ When a user sends "/help" or asks about the available commands, please reply wit
 |`/transactions`|Display the transaction records of each item in the account ledger.|`GET /v1/transactions?limit=10&offset=0&sn={....}`|
 | `/deposit <sn> <CNH> <topupmoney>` | Create a simulated fund for the selected assets. | `POST /v1/aideposit` |
 |`/deposit-status <deposit_id>`|status of simulated deposit records|`GET /v1/airesult?session_id={deposit_id}`|
-|`/Position`|List all the holdings.|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
+|`/Position`|List holdings.|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
+|`/Close-position`|List the closed positions held.|`GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}`|
 |`/Order`|List the order for opening positions|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
-
+|`/Close-order`|List the order for opening positions|`GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}`|
 
 
 ## Safety Rules
@@ -127,7 +128,39 @@ List Position:
 ```http
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
 ```
-Please list the code, name, direction, position quantity, opening price, current price, floating profit/loss, profit/loss rate, margin occupation, spread fee, cumulative overnight interest, and position status (1 for normal, 2 for closed) in the form of information modules in the report.
+Please present the code, name, direction, position quantity, opening price, current price, floating profit/loss, profit/loss rate, margin occupation, spread fee, cumulative overnight interest, and position status (1 indicates normal, 2 indicates closed) in the report in the form of an information module.
+Translation:  
+-代码/名称：神农种业(300189.SZ)  
+-总持仓合约金额：50000  
+-平均建仓价：6.39  
+-持仓浮动盈亏：1095.4617  
+-浮动盈亏率：2.1909%  
+-当前价格：6.53  
+-持仓市值：51095.4617  
+-占用保证金：5000  
+-累计点差费：1500  
+-累计隔夜利息：0  
+-持仓状态:1表示正常，2表示已平仓  
+## Close Position
+List Close Position:
+```http
+GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}
+```
+
+Please present the code, name, direction, position quantity, opening price, current price, floating profit/loss, profit/loss rate, margin occupation, spread fee, cumulative overnight interest, and position status (1 indicates normal, 2 indicates closed) in the report in the form of an information module.
+Translation:  
+-代码/名称：神农种业(300189.SZ)  
+-总持仓合约金额：50000  
+-平均建仓价：6.39  
+-持仓浮动盈亏：1095.4617  
+-浮动盈亏率：2.1909%  
+-当前价格：6.53  
+-持仓市值：51095.4617  
+-占用保证金：5000  
+-累计点差费：1500  
+-累计隔夜利息：0  
+-持仓状态:1表示正常，2表示已平仓  
+
 ## BUILD Order
 List Order:
 ```http
@@ -143,6 +176,22 @@ Please list the code, name, type, direction, contract amount, completed transact
 -下单价格：6.39  
 -保证金额：5000  
 -点差费：1500  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：1为处理中，3为全部成交、4为已撤单  
+## CLOSE Order
+List Close Order:
+```http
+GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}
+```
+Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:  
+-名称/代码：神农种业(300189.SZ)  
+-类型：平仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
 -创建时间：2026-09-18 09:30:05  
 -更新时间：2026-09-18 09:30:08  
 -订单状态：1为处理中，3为全部成交、4为已撤单  
