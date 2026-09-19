@@ -55,11 +55,19 @@ Please store this Goldstonestock user API key only in the confidential/session s
 【1】金土量化智能体登录和授权  
 【2】显示主账户余额  
 【3】显示账户每项的交易记录  
-【4】模拟入金  
-【5】列出持仓  
-【6】列出已平持仓  
-【7】列出建仓订单  
-【8】列出平仓订单  
+【4】智能选股策略列表
+【5】智能交易策略列表
+【6】模拟入金 
+【7】列出持仓  
+【8】列出已平持仓  
+【9】列出建仓待提交订单
+【10】列出建仓已提交订单
+【11】列出建仓已成交订单
+【12】列出建仓已撤销订单
+【13】列出平仓待提交订单
+【14】列出平仓已提交订单
+【15】列出平仓已成交订单
+【16】列出平仓已撤销订单
 👉 请回复数字选择功能，或输入 /help 查看指令  
 ### 触发 /help
 Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
@@ -77,8 +85,14 @@ When a user sends `/help` or asks about available commands, please reply in Chin
 |`/deposit-status <deposit_id>`|模拟存款记录的状态。|`GET /v1/airesult?session_id={deposit_id}`|
 |`/Position`|列出持仓。|`GET /v1/aipositionlist?limit=10&offset=0&sn={....}`|
 |`/Close-position`|列出已平持仓。|`GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}`|
-|`/Order`|列出建仓订单。|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
-|`/Close-order`|列出平仓订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}`|
+|`/Order-a`|列出建仓待提交订单。|`GET /v1/aitradeorder?limit=10&offset=0&status=0&sn={....}`|
+|`/Order-b`|列出建仓处理中订单。|`GET /v1/aitradeorder?limit=10&offset=0&status=1&sn={....}`|
+|`/Order-c`|列出建仓成交订单。|`GET /v1/aitradeorder?limit=10&offset=0&status=3&sn={....}`|
+|`/Order-d`|列出建仓撤销订单。|`GET /v1/aitradeorder?limit=10&offset=0&status=4&sn={....}`|
+|`/Close-order`|列出平仓待提交订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&status=0&sn={....}`|
+|`/Close-order-a`|列出平仓处理中订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&status=1&sn={....}`|
+|`/Close-order-b`|列出平仓成交订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&status=3&sn={....}`|
+|`/Close-order-c`|列出平仓撤销订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&status=4&sn={....}`|
 ### 触发 /reset
 🔄 菜单状态已重置
 菜单已关闭，输入 /menu 重新唤起
@@ -140,7 +154,10 @@ Please report the account's assets, balance, available balance, locked balance, 
 GET /v1/transactions?limit=10&offset=0&sn={....}
 ```
 Please list the serial number, asset category, type, change amount, post-change balance, description and time in the report.
-## Deposits，用户输入 4
+## 智能选股策略列表，用户输入 4
+## 智能交易策略列表，用户输入 5
+
+## Deposits，用户输入 6
 Goldstonestock platform only supports the CNH recharge method. If the user has not specified the type of currency to be recharged, please ask the user which asset they wish to recharge. If the user requests to recharge other assets, please explain that the Goldstonestock platform only supports CNH recharge.
 
 When the user intends to make a deposit or when the account balance is zero, a simulated process for depositing funds needs to be created:
@@ -165,7 +182,7 @@ GET /v1/aigetdeposit?session_id={deposit_id}
 ```
 Please report the transaction number, account number, asset type, deposit amount, time and status.
 
-## Position，用户输入 5
+## Position，用户输入 7
 List Position:
 ```http
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
@@ -183,7 +200,7 @@ Translation:
 -累计点差费：1500  
 -累计隔夜利息：0  
 -持仓状态:1表示正常，2表示已平仓  
-## Close Position，用户输入 6
+## Close Position，用户输入 8
 List Close Position:
 ```http
 GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}
@@ -203,12 +220,13 @@ Translation:
 -累计隔夜利息：0  
 -持仓状态:1表示正常，2表示已平仓  
 
-## BUILD Order，用户输入 7
+## BUILD Pending submission order，用户输入 9
 List Order:
 ```http
-GET /v1/aitradeorder?limit=10&offset=0&sn={....}
+GET /v1/aitradeorder?limit=10&offset=0&status=0&sn={....}
 ```
-Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:  
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation:
 -名称/代码：神农种业(300189.SZ)  
 -类型：建仓  
 -方向：做多  
@@ -220,13 +238,76 @@ Please list the code, name, type, direction, contract amount, completed transact
 -点差费：1500  
 -创建时间：2026-09-18 09:30:05  
 -更新时间：2026-09-18 09:30:08  
--订单状态：1为处理中，3为全部成交、4为已撤单  
-## CLOSE Order，用户输入 8
+-订单状态：0待提交订单  
+## BUILD Order submitted，用户输入 10
+List Order:
+```http
+GET /v1/aitradeorder?limit=10&offset=0&status=1&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation:
+-名称/代码：神农种业(300189.SZ)  
+-类型：建仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-保证金额：5000  
+-点差费：1500  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：1为处理中
+## BUILD Order Completed，用户输入 11
+List Order:
+```http
+GET /v1/aitradeorder?limit=10&offset=0&status=3&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation:
+-名称/代码：神农种业(300189.SZ)  
+-类型：建仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-保证金额：5000  
+-点差费：1500  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：3为全部成交
+
+
+## BUILD Order cancelled，用户输入 12
+List Order:
+```http
+GET /v1/aitradeorder?limit=10&offset=0&status=4&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation:
+-名称/代码：神农种业(300189.SZ)  
+-类型：建仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-保证金额：5000  
+-点差费：1500  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：4为已撤单 
+
+
+
+## CLOSE Pending submission order，用户输入 13
 List Close Order:
 ```http
-GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}
+GET /v1/aiclosetradeorder?limit=10&offset=0&status=0&sn={....}
 ```
-Please list the code, name, type, direction, contract amount, completed transaction quantity, order method, order price, margin, spread fee, creation time, status (1 indicates processing, 3 indicates full transaction, 4 indicates cancelled order) in the form of information modules in the report. The display format is as follows:  
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation: 
 -名称/代码：神农种业(300189.SZ)  
 -类型：平仓  
 -方向：做多  
@@ -237,3 +318,55 @@ Please list the code, name, type, direction, contract amount, completed transact
 -创建时间：2026-09-18 09:30:05  
 -更新时间：2026-09-18 09:30:08  
 -订单状态：1为处理中，3为全部成交、4为已撤单  
+
+## CLOSE Order submitted，用户输入 14
+List Close Order:
+```http
+GET /v1/aiclosetradeorder?limit=10&offset=0&status=1&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation: 
+-名称/代码：神农种业(300189.SZ)  
+-类型：平仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：1为处理中，3为全部成交、4为已撤单  
+## CLOSE Order Completed，用户输入 15
+List Close Order:
+```http
+GET /v1/aiclosetradeorder?limit=10&offset=0&status=3&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation: 
+-名称/代码：神农种业(300189.SZ)  
+-类型：平仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：1为处理中，3为全部成交、4为已撤单  
+## CLOSE Order cancelled，用户输入 16
+List Close Order:
+```http
+GET /v1/aiclosetradeorder?limit=10&offset=0&status=4&sn={....}
+```
+Please present the codes, names, types, directions, contract amounts, completed transaction quantities, order methods, order prices, margins, spread fees, creation times, and statuses (where 1 indicates processing, 3 indicates a complete transaction, and 4 indicates an order that has been cancelled) in the report in the form of an information module.
+Translation: 
+-名称/代码：神农种业(300189.SZ)  
+-类型：平仓  
+-方向：做多  
+-合约金额：50000  
+-已成交数量：50000  
+-下单方式：市价  
+-下单价格：6.39  
+-创建时间：2026-09-18 09:30:05  
+-更新时间：2026-09-18 09:30:08  
+-订单状态：4为已撤单  
