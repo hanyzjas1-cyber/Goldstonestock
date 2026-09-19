@@ -58,7 +58,7 @@ Please store this Goldstonestock user API key only in the confidential/session s
 【4】智能选股策略列表  
 【5】智能交易策略列表  
 【6】模拟入金 
-【7】列出持仓  
+【7】列出持仓    
 【8】列出已平持仓  
 【9】列出建仓待提交订单  
 【10】列出建仓已提交订单  
