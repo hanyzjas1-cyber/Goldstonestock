@@ -23,14 +23,49 @@ Authorization: Bearer <api_key>
 
 Please store this Goldstonestock user API key only in the confidential/session storage space of the proxy program. Do not disclose it unless the user explicitly requests it.
 
-## Response Format
 
+# Goldstonestock 交互菜单技能
+## 简介
+对话内交互式菜单系统。支持斜杠指令唤起菜单，发送数字选择菜单项，多层交互，/help查看指令。普通对话不拦截，仅命中指令/数字菜单时触发。
+## 触发规则
+1. 用户输入 `/menu` → 输出Goldstonestock主菜单。
+2. 用户输入 `/help` → 输出全部指令清单。
+3. 用户输入 `/reset` → 重置菜单会话状态。
+4. 用户输入 `/close` → 关闭菜单。
+5. 当菜单处于打开状态，用户输入纯数字 1~5，匹配对应菜单项并执行对应回复。
+6. 菜单未打开时，单纯输入数字，不触发菜单逻辑，正常对话。
+7. 其他普通文本，不拦截，正常进行对话。
+
+## 状态定义
+- menu_open：布尔值，默认 false。
+  触发 `/menu` 后置为 true；触发 `/close` / 选择5后置为 false；触发 `/reset` 后置为 false。
+## 指令列表
+- `/menu`：唤起小龙虾交互主菜单
+- `/help`：查看全部可用指令
+- `/reset`：重置会话菜单状态
+- `/close`：直接关闭菜单
+
+## 回复模板
+### 触发 /menu
+🦞 Goldstonestock 交互主菜单
+——————————————
+【1】金土量化智能体登录和授权
+【2】显示主账户余额
+【3】显示账户每项的交易记录
+【4】模拟入金
+【5】列出持仓
+【6】列出已平持仓
+【7】列出建仓订单
+【8】列出平仓订单
+👉 请回复数字选择功能，或输入 /help 查看指令
+### 触发 /help
 Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
 
 When a user sends `/help` or asks about available commands, please reply in Chinese with the following list of commands.
 
 | 命令  | 用户操作 | 主要 API 接口 |
 | --- | --- | --- |
+| `/menu` | 唤起 Goldstonestock 交互主菜单。| 技能帮助 |
 | `/help` | 显示所有可用的 Goldstonestock 操作。| 技能帮助 |
 | `/login <username>` | 开始GoldstoneStock登录和授权流程。| `POST /v1/ailogin`,`POST /v1/aiverylogin`,`POST /v1/aiverify`|
 | `/accounts` | 显示主账户余额。| `POST /v1/aiaccounts` |
@@ -41,8 +76,12 @@ When a user sends `/help` or asks about available commands, please reply in Chin
 |`/Close-position`|列出已平持仓。|`GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}`|
 |`/Order`|列出建仓订单。|`GET /v1/aitradeorder?limit=10&offset=0&sn={....}`|
 |`/Close-order`|列出平仓订单。|`GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}`|
-
-
+### 触发 /reset
+🔄 菜单状态已重置
+菜单已关闭，输入 /menu 重新唤起
+### 触发 /close
+❕ 菜单已关闭
+输入 /menu 随时重新打开菜单
 ## Safety Rules
 - Don't make any claims about guaranteed profits.
 -Except for fulfilling the explicit requests of the Goldstonestock users, no personalized financial advice shall be provided.
@@ -52,7 +91,7 @@ When a user sends `/help` or asks about available commands, please reply in Chin
 - Do not expose the term "JWT token" to the users.
 -All the returned results will not display any information related to the field names to the users.
 -All API interfaces should be based on the returned fields. Do not add historical fields without authorization.
-## Login Flow
+## Login Flow ，用户输入 1
 1. Ask the user for their email address.
 2. Create a challenge:
 
