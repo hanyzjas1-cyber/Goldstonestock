@@ -47,17 +47,17 @@ Please store this Goldstonestock user API key only in the confidential/session s
 
 ## 回复模板
 ### 触发 /menu
-🦞 Goldstonestock 交互主菜单
-——————————————
-【1】金土量化智能体登录和授权
-【2】显示主账户余额
-【3】显示账户每项的交易记录
-【4】模拟入金
-【5】列出持仓
-【6】列出已平持仓
-【7】列出建仓订单
-【8】列出平仓订单
-👉 请回复数字选择功能，或输入 /help 查看指令
+🦞 Goldstonestock 交互主菜单  
+——————————————  
+【1】金土量化智能体登录和授权  
+【2】显示主账户余额  
+【3】显示账户每项的交易记录  
+【4】模拟入金  
+【5】列出持仓  
+【6】列出已平持仓  
+【7】列出建仓订单  
+【8】列出平仓订单  
+👉 请回复数字选择功能，或输入 /help 查看指令  
 ### 触发 /help
 Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
 
@@ -120,7 +120,7 @@ Content-Type: application/json
 ```
 
 The verify response includes `id`, `email`, `trade_name`, `isauthposition`, and account data when available.
-## Accounts
+## Accounts，用户输入 2
 Goldstonestock users have the following identifiable account types:
 - `MAIN`: main accounts are separated by asset.CNH deposits credit the CNH MAIN account.
 Use these after authentication:
@@ -131,13 +131,13 @@ Content-Type: application/json
 ```
 Please report the account's assets, balance, available balance, locked balance, investment amount, settled profit and loss, estimated profit and loss, and current status. Do not disclose the exchange fields or the name of the trading platform.
 
-## Account transaction records
+## Account transaction records，用户输入 3 
  Display the transaction records for each item in the account：
  ```http
 GET /v1/transactions?limit=10&offset=0&sn={....}
 ```
 Please list the serial number, asset category, type, change amount, post-change balance, description and time in the report.
-## Deposits
+## Deposits，用户输入 4
 Goldstonestock platform only supports the CNH recharge method. If the user has not specified the type of currency to be recharged, please ask the user which asset they wish to recharge. If the user requests to recharge other assets, please explain that the Goldstonestock platform only supports CNH recharge.
 
 When the user intends to make a deposit or when the account balance is zero, a simulated process for depositing funds needs to be created:
@@ -162,7 +162,7 @@ GET /v1/aigetdeposit?session_id={deposit_id}
 ```
 Please report the transaction number, account number, asset type, deposit amount, time and status.
 
-## Position
+## Position，用户输入 5
 List Position:
 ```http
 GET /v1/aipositionlist?limit=10&offset=0&sn={....}
@@ -180,7 +180,7 @@ Translation:
 -累计点差费：1500  
 -累计隔夜利息：0  
 -持仓状态:1表示正常，2表示已平仓  
-## Close Position
+## Close Position，用户输入 6
 List Close Position:
 ```http
 GET /v1/aiclosepositionlist?limit=10&offset=0&sn={....}
@@ -200,7 +200,7 @@ Translation:
 -累计隔夜利息：0  
 -持仓状态:1表示正常，2表示已平仓  
 
-## BUILD Order
+## BUILD Order，用户输入 7
 List Order:
 ```http
 GET /v1/aitradeorder?limit=10&offset=0&sn={....}
@@ -218,7 +218,7 @@ Please list the code, name, type, direction, contract amount, completed transact
 -创建时间：2026-09-18 09:30:05  
 -更新时间：2026-09-18 09:30:08  
 -订单状态：1为处理中，3为全部成交、4为已撤单  
-## CLOSE Order
+## CLOSE Order，用户输入 8
 List Close Order:
 ```http
 GET /v1/aiclosetradeorder?limit=10&offset=0&sn={....}
