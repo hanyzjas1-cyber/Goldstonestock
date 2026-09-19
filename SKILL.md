@@ -60,14 +60,14 @@ Please store this Goldstonestock user API key only in the confidential/session s
 【6】模拟入金 
 【7】列出持仓  
 【8】列出已平持仓  
-【9】列出建仓待提交订单
-【10】列出建仓已提交订单
-【11】列出建仓已成交订单
-【12】列出建仓已撤销订单
-【13】列出平仓待提交订单
-【14】列出平仓已提交订单
-【15】列出平仓已成交订单
-【16】列出平仓已撤销订单
+【9】列出建仓待提交订单  
+【10】列出建仓已提交订单  
+【11】列出建仓已成交订单  
+【12】列出建仓已撤销订单  
+【13】列出平仓待提交订单  
+【14】列出平仓已提交订单  
+【15】列出平仓已成交订单  
+【16】列出平仓已撤销订单  
 👉 请回复数字选择功能，或输入 /help 查看指令  
 ### 触发 /help
 Please do not list the complete list of commands in every reply. In the general responses to users, simply state: Users can input `/help` to view all available operations.
