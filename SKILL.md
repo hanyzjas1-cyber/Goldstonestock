@@ -55,8 +55,8 @@ Please store this Goldstonestock user API key only in the confidential/session s
 【1】金土量化智能体登录和授权  
 【2】显示主账户余额  
 【3】显示账户每项的交易记录  
-【4】智能选股策略列表
-【5】智能交易策略列表
+【4】智能选股策略列表  
+【5】智能交易策略列表  
 【6】模拟入金 
 【7】列出持仓  
 【8】列出已平持仓  
